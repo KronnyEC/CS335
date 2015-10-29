@@ -19,9 +19,14 @@ public class NQueens {
 			//Found solution made it to the state and about to make a recursive call at this state
 			//fill in the queen in this particular spot and this does not exist, have basically reached the end
 			
-			System.out.println("solution" + board);
+			System.out.print("solution : ");
+			for(int i=0; i<n; i++){
+				System.out.print(board[i] + " ");
+			}
 			
+			System.out.println("");
 			//counting that I found a solution
+			found =1;
 		} else { //recursive 
 			
 			//need to find for all of them in a loop
@@ -33,6 +38,21 @@ public class NQueens {
 				//Feasability check -- pruning state space tree because it can not lead to a solution 
 				//Should probably out to check if all the queens effect each other.
 				boolean isValid = true;
+				
+				for (int i=0; i<nextCol; i++){
+					
+					
+					//Row check
+					if(board[i] == board[nextCol]){
+						isValid = false;
+					}
+					
+					//Diag Check
+					if(Math.abs(board[i] - board[nextCol]) == (nextCol - i)){
+						isValid = false;
+					}
+					
+				}
 				
 				//Can't any 2 queens on the same col, no queens on same row & diagonal
 				
@@ -48,7 +68,7 @@ public class NQueens {
 	
 	
 	public static void main(String[] args) {
-		int n = 4;
+		int n = 8;
 		NQueens nq = new NQueens(n);
 		
 		int[] board = new int[n];
@@ -57,6 +77,7 @@ public class NQueens {
 		}
 		
 		int found = nq.solve(board, 0);
+		System.out.println(found);
 	}
 
 }

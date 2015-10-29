@@ -56,7 +56,7 @@ public class NQueensState implements State {
 	@Override
 	public State nextChild() {
 		
-		
+		//test
 		
 		return null;
 	}

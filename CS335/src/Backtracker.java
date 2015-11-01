@@ -5,7 +5,7 @@ public class Backtracker {
 		 
 		int found = 0;
 		
-		if (s.solved()){
+		if (s.isSolved()){
 			found =1;
 		} else {
 			
